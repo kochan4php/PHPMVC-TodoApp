@@ -1,6 +1,6 @@
 <div class="row justify-content-center">
   <div class="col-md-7">
-    <h1 class="text-center mb-4">What's your plan today?</h1>
+    <h1 class="text-center mb-4">Uncompleted Todos</h1>
   </div>
 </div>
 
@@ -40,7 +40,7 @@
           </ul>
         <?php else : ?>
           <ul class="list-group mt-4">
-            <li class="list-group-item text-center">No Todo Today</li>
+            <li class="list-group-item text-center">No Todo Uncompleted Today</li>
           </ul>
         <?php endif ?>
       </div>

@@ -49,6 +49,15 @@ class Todos_Model extends Database
     return $this->getAll();
   }
 
+  public function getAllUncompletedTodos()
+  {
+    $query = 'SELECT * FROM todos WHERE status = 0';
+    $this->sql($query);
+    $this->execute();
+
+    return $this->getAll();
+  }
+
   public function removeTodos($id)
   {
     $query = 'DELETE FROM todos WHERE id = :id';
