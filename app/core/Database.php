@@ -7,7 +7,6 @@ class Database extends PDO
   private $db_pass = DB_PASS;
   private $db_name = DB_NAME;
 
-  private $database_handler;
   private $statement;
 
   // Konfigurasi database
