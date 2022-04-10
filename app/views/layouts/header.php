@@ -27,10 +27,10 @@
       <div class="collapse navbar-collapse justify-content-end" id="navbarNav">
         <ul class="navbar-nav">
           <li class="nav-item">
-            <a class="nav-link" href="<?= BASEURL ?>">Completed</a>
+            <a class="nav-link" href="<?= BASEURL . '/todos/completed' ?>">Completed</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="<?= BASEURL . 'mahasiswa' ?>">Uncompleted</a>
+            <a class="nav-link" href="<?= BASEURL . '/todos/uncompleted' ?>">Uncompleted</a>
           </li>
         </ul>
       </div>

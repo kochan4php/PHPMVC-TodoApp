@@ -65,4 +65,10 @@ class Database extends PDO
     $this->execute();
     return $this->statement->fetchAll(PDO::FETCH_ASSOC);
   }
+
+  protected function getOne()
+  {
+    $this->execute();
+    return $this->statement->fetch(PDO::FETCH_ASSOC);
+  }
 }

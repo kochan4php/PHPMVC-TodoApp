@@ -2,18 +2,19 @@
 
 class Todos_Model extends Database
 {
-  private $todos_statuses = [];
-
   public function getAllTodos()
   {
     $this->sql('SELECT * FROM todos');
     return $this->getAll();
   }
 
-  public function getAllTodosByStatus()
+  public function getTodosById($id)
   {
-    $this->sql('SELECT * FROM todos WHERE status = 0');
-    return $this->getAll();
+    $this->sql('SELECT * FROM todos WHERE id = :id');
+    $this->bind('id', $id);
+    $this->execute();
+
+    return $this->getOne();
   }
 
   public function addNewTodos($kegiatan)
@@ -28,25 +29,24 @@ class Todos_Model extends Database
 
   public function updateStatusTodos($id)
   {
-    // $query = 
-    $todos = $this->getAllTodosByStatus();
-    foreach ($todos as $todo) {
-      if ($todo['status'] === 0) {
-        $query = 'UPDATE todos SET status=1 WHERE id=:id';
-        $this->sql($query);
-        $this->bind('id', $id);
-        $this->execute();
+    $todo = $this->getTodosById($id);
+    $status = $todo['status'] === 1 ? 0 : 1;
+    $query = 'UPDATE todos SET status = :status WHERE id = :id';
+    $this->sql($query);
+    $this->bind('id', $id);
+    $this->bind('status', $status);
+    $this->execute();
 
-        return $this->rowCount();
-      } else if ($todo['status'] === 1) {
-        $query = 'UPDATE todos SET status=0 WHERE id=:id';
-        $this->sql($query);
-        $this->bind('id', $id);
-        $this->execute();
+    return $this->rowCount();
+  }
 
-        return $this->rowCount();
-      }
-    }
+  public function getAllCompletedTodos()
+  {
+    $query = 'SELECT * FROM todos WHERE status = 1';
+    $this->sql($query);
+    $this->execute();
+
+    return $this->getAll();
   }
 
   public function removeTodos($id)

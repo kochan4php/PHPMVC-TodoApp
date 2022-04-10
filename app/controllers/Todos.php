@@ -12,6 +12,14 @@ class Todos extends Controller
     $this->view('todos/index', $data);
   }
 
+  public function completed()
+  {
+    $data['judul'] = 'Home Page';
+    $data['todos'] = $this->model($this->model)->getAllCompletedTodos();
+
+    $this->view('todos/completed', $data);
+  }
+
   public function create()
   {
     // var_dump($_POST);
