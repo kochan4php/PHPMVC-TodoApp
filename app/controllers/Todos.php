@@ -45,7 +45,6 @@ class Todos extends Controller
   {
     if ($this->model($this->model)->updateStatusTodos($id) > 0) {
       header('Location: ' . BASEURL);
-      Flasher::setFlash('berhasil', 'diselesaikan', 'success');
       exit;
     }
   }

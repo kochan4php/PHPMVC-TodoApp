@@ -4,7 +4,7 @@ class Todos_Model extends Database
 {
   public function getAllTodos()
   {
-    $this->sql('SELECT * FROM todos');
+    $this->sql('SELECT * FROM todos ORDER BY status ASC');
     return $this->getAll();
   }
 
